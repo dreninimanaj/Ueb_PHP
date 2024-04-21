@@ -1,0 +1,60 @@
+/* styling login.php */
+
+.alert {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    }
+
+    .alert-danger {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+    }
+
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+    }
+    .btn-submit {
+      background-color: #343a40;
+      color: white;
+      border-radius: 10px;
+      padding: 10px 20px;
+      margin-top: 20px;
+    }
+    .btn-submit:hover {
+      background-color: #2c2f33;
+      color:gray;
+      cursor: pointer;
+    }
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+  
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+  
+    th {
+      background-color: #ddd;
+    }
+  
+    .btn-primary {
+      background-color: #337ab7;
+      color: #fff;
+    }
+  
+    .btn-danger {
+      background-color: #d9534f;
+      color: #fff;
+    }
+
+    

@@ -1,0 +1,6 @@
+{
+    "require": {
+      "jackh/steam-api": "^0.5.1"
+    }
+  }
+  
