@@ -1,13 +1,13 @@
 <?php include 'header.php'; ?>
 <script>
-        if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
-        }
-    </script>
-    
-        <!-- Page Content  -->
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+</script>
 
-      <?php
+<!-- Page Content  -->
+
+<?php
 
 include 'config.php';
 $user_id = $_SESSION['id'];
@@ -26,7 +26,7 @@ if ($result->num_rows > 0) {
 <html>
 
 <head>
-    <title>Ride-Along Ratings</title>
+    <title>Vlereso punonjsin</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         /* Add your CSS styles here */
@@ -107,30 +107,30 @@ if ($result->num_rows > 0) {
 <body>
     <div id="content">
         <form method="POST" action="vlerso.php">
-            <h2>Vler&euml;so patrullimin me kadet</h2>
+            <h2>Vler&euml;so punonjesin</h2>
             <hr>
 
             <!-- Officer's Name (Read-only) -->
             <div class="form-group">
-                <label for="officer_name">Emri i zyrtarit q&euml; kreu patrullimin:</label>
+                <label for="officer_name">Emri i mbikeqyresit:</label>
                 <input type="text" name="officer_name" id="officer_name" value="<?php echo $fullname; ?>" readonly>
             </div>
 
             <!-- Cadet's Name (Dropdown with E-filter) -->
             <div class="form-group">
-                <label for="cadet_name">Emri i kadetit:</label>
+                <label for="cadet_name">Emri i punonjesit:</label>
                 <select name="cadet_name" id="cadet_name">
-                <?php
-                $sql = "SELECT number, first_last FROM members WHERE LEFT(number, 1) = 'E'";
-                $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<option value='" . $row["number"] . "'>" . $row["number"] . " | " . $row["first_last"] . "</option>";
+                    <?php
+                    $sql = "SELECT number, first_last FROM members WHERE LEFT(number, 1) = 'E'";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<option value='" . $row["number"] . "'>" . $row["number"] . " | " . $row["first_last"] . "</option>";
+                        }
                     }
-                }
-                $conn->close();
-                ?>
-            </select>
+                    $conn->close();
+                    ?>
+                </select>
 
             </div>
 
@@ -140,10 +140,10 @@ if ($result->num_rows > 0) {
                 <textarea required name="experience" id="experience" cols="30" rows="5"></textarea>
             </div>
             <label> Vler&euml;simi me poena <h5> <span style="color: red;">1 - Dob&euml;t</span>, <span style="color:indianred;">2 - Mjaftu&euml;shem</span>, <span style="color:goldenrod;">3 - Mir&euml;</span>, <span style="color: orange;">4 - Shum&euml; Mir&euml;</span>, <span style="color: green;">5 - Shk&euml;lqyeshem</span> </h5></label>
-                    <hr>
+            <hr>
             <!-- Ratings (Select Boxes) -->
             <div class="form-group">
-                <label>Ndaljet (10-11), Ndjekjet (10-80), Vozitja:</label>
+                <label>Etika dhe sjelljet ne pune:</label>
                 <select name="behavior" class="rating-select">
                     <?php
                     for ($i = 1; $i <= 5; $i++) {
@@ -154,7 +154,7 @@ if ($result->num_rows > 0) {
             </div>
 
             <div class="form-group">
-                <label>Kodet e komunikimit dhe etika n&euml; radio:</label>
+                <label>Puna ne grup dhe nen presion:</label>
                 <select name="stops" class="rating-select">
                     <?php
                     for ($i = 1; $i <= 5; $i++) {
@@ -165,7 +165,7 @@ if ($result->num_rows > 0) {
             </div>
 
             <div class="form-group">
-                <label>Sjellja me koleg&euml;t dhe qytetar&euml;t:</label>
+                <label>Aftesite ne shitje:</label>
                 <select name="communications" class="rating-select">
                     <?php
                     for ($i = 1; $i <= 5; $i++) {
@@ -187,11 +187,12 @@ if ($result->num_rows > 0) {
 
 </div>
 
-		</div>
+</div>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+
 </html>
