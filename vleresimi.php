@@ -5,27 +5,44 @@
     }
 </script>
 
-<!-- Page Content  -->
-
 <?php
 
 include 'config.php';
-$user_id = $_SESSION['id'];
 
-// Get the full name of the user from the database
-// Prepare the SQL statement
-$stmt = $conn->prepare("SELECT fullname, role FROM users WHERE id = ?");
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
-$stmt->bind_result($fullname, $role);
-if ($stmt->fetch()) {
-} else {
-    $fullname = null;
-    $role = null;
+try {
+    session_start();
+    
+    if (!isset($_SESSION['id'])) {
+        throw new Exception("ID e sesionit nuk është vendosur.");
+    }
+
+    $user_id = $_SESSION['id'];
+
+    // Merr emrin e plotë të përdoruesit nga baza e të dhënave
+    // Përgatit deklaratën SQL
+    $stmt = $conn->prepare("SELECT fullname, role FROM users WHERE id = ?");
+    if (!$stmt) {
+        throw new Exception("Gabim në përgatitjen e deklaratës: " . $conn->error);
+    }
+    
+    $stmt->bind_param("i", $user_id);
+    
+    if (!$stmt->execute()) {
+        throw new Exception("Gabim në ekzekutimin e deklaratës: " . $stmt->error);
+    }
+
+    $stmt->bind_result($fullname, $role);
+    if ($stmt->fetch()) {
+    } else {
+        $fullname = null;
+        $role = null;
+    }
+
+    // Mbyll deklaratën
+    $stmt->close();
+} catch (Exception $e) {
+    echo "Gabim: " . $e->getMessage();
 }
-
-// Close the statement
-$stmt->close();
 
 ?>
 
@@ -44,7 +61,7 @@ $stmt->close();
 
         #content {
             max-width: 800px;
-            margin: 40 auto;
+            margin: 40px auto;
             background-color: white;
             padding: 20px;
             border-radius: 5px;
@@ -135,7 +152,6 @@ $stmt->close();
                             echo "<option value='" . $row["number"] . "'>" . $row["number"] . " | " . $row["first_last"] . "</option>";
                         }
                     }
-                    $conn->close();
                     ?>
                 </select>
 
@@ -186,20 +202,4 @@ $stmt->close();
             <div class="form-group-submit">
                 <input type="submit" value="Regjistro vler&euml;simin">
             </div>
-        </form>
-    </div>
-</body>
-
-</html>
-
-</div>
-
-</div>
-
-<script src="js/jquery.min.js"></script>
-<script src="js/popper.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
-</body>
-
-</html>
+       
