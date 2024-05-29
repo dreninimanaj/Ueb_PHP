@@ -91,7 +91,7 @@ if ($result->num_rows > 0) {
 					<th>Numri i begjit te policit</th>
 					<th>Data</th>
 					<th>Spjegimi i rastit</th>
-					<th>Gabimi i policit</th>
+					
 					 <th>Evidenca</th>
 				</tr>
 			</thead>
@@ -106,7 +106,7 @@ if ($result->num_rows > 0) {
 						echo "<td><b>" . $row[1] . "</b></td>";
 						echo "<td>" . $row[2] . "</td>";
 						echo "<td><textarea readonly>" . $row[3] . "</textarea></td>";
-						echo "<td><textarea readonly>" . $row[4] . "</textarea></td>";
+						
 						echo "<td><a href='" . $row[5] . "' target='_blank'>" . $row[5] . "</a></td>";
 						echo "</tr>";
 					}

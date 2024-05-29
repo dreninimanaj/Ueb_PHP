@@ -13,13 +13,20 @@ include 'config.php';
 $user_id = $_SESSION['id'];
 
 // Get the full name of the user from the database
-$sql = "SELECT fullname, role FROM users WHERE id = $user_id";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $fullname = $row['fullname'];
-    $role = $row['role'];
+// Prepare the SQL statement
+$stmt = $conn->prepare("SELECT fullname, role FROM users WHERE id = ?");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$stmt->bind_result($fullname, $role);
+if ($stmt->fetch()) {
+} else {
+    $fullname = null;
+    $role = null;
 }
+
+// Close the statement
+$stmt->close();
+
 ?>
 
 <!DOCTYPE html>

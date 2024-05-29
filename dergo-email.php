@@ -50,7 +50,7 @@
     $body = "Pershendetje Kolonel, nje user ka kerkuar akses per qasje te mbikeqyresit ne databaze, te dhenat e tij jane te listuara me poshte:\n\nEmri Mbiemri: $fullName\nData e kerkeses: $date\nIp e qasjes: $ip";
 
     // Send email using SMTP
-    $mail = new PHPMailer\PHPMailer\PHPMailer();
+    //$mail = new PHPMailer\PHPMailer\PHPMailer();
     $mail->isSMTP();
     $mail->Host = 'smtp.example.com'; // Your SMTP server details here
     $mail->SMTPAuth = true;
