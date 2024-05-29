@@ -2,14 +2,15 @@
 <?php include 'config.php'; 
 $user_id = $_SESSION['id'];
 
-// Get the full name of the user from the database
-$sql = "SELECT fullname, role FROM users WHERE id = $user_id";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $fullname = $row['fullname'];
-	$role = $row['role'];
-}?>
+// Get the full name of the user from the database using references
+$sql = "SELECT fullname, role FROM users WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$stmt->bind_result($fullname, $role);
+$stmt->fetch();
+$stmt->close();
+?>
 <script>
         if (window.history.replaceState) {
             window.history.replaceState(null, null, window.location.href);
@@ -127,5 +128,29 @@ if ($result->num_rows > 0) {
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Listen for changes in the input fields
+            const formInputs = {
+                daljesInput: document.getElementById("data_daljes"),
+                rikthimitInput: document.getElementById("data_rikthimit"),
+                totalDaysInput: document.getElementById("aprovuar_nga")
+            };
+
+            formInputs.daljesInput.addEventListener("change", updateTotalDays);
+            formInputs.rikthimitInput.addEventListener("change", updateTotalDays);
+
+            function updateTotalDays() {
+                const daljesDate = new Date(formInputs.daljesInput.value);
+                const rikthimitDate = new Date(formInputs.rikthimitInput.value);
+                if (daljesDate && rikthimitDate) {
+                    const totalDays = Math.ceil((rikthimitDate - daljesDate) / (1000 * 60 * 60 * 24));
+                    formInputs.totalDaysInput.value = totalDays + ' dit\u00EB';
+                }
+            }
+        });
+    </script>
+
   </body>
 </html>

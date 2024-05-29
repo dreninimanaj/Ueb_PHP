@@ -3,7 +3,7 @@
         if (window.history.replaceState) {
             window.history.replaceState(null, null, window.location.href);
         }
-    </script>
+</script>
     
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
