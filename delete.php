@@ -19,11 +19,9 @@ if (isset($_GET['id'])) {
     // Construct the fullname value
     $fullname = $number . ' ' . $first_last;
 
-    // Delete the row from the members table
     $sql = "DELETE FROM members WHERE ID='$id'";
     mysqli_query($conn, $sql);
 
-    // Check if a row with the same fullname value exists in the users table
     $sql = "SELECT * FROM users WHERE fullname='$fullname'";
     $result = mysqli_query($conn, $sql);
 
@@ -35,5 +33,3 @@ if (isset($_GET['id'])) {
 
     header("Location:index.php");
 }
-
-?>
