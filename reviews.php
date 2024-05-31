@@ -205,7 +205,7 @@ if (!($role == "user")) {
 
     <body>
         <div id="content">
-            <h2>K&euml;rko vler&euml;simet p&euml;r performanc&euml;n e kadet&euml;ve</h2>
+            <h2>K&euml;rko vler&euml;simet p&euml;r performanc&euml;n e pun&euml;tor&euml;ve</h2>
             <form method="POST" action="">
                 <!-- Cadet's Name (Dropdown) -->
                 <div class="form-group">
@@ -263,7 +263,7 @@ if (!($role == "user")) {
 
     </html>
 <?php else : ?>
-    <p class="no-reviews">Nuk ka asnj&euml; vler&euml;sim p&euml;r k&euml;t&euml; kadet.</p>
+    <p class="no-reviews">Nuk ka asnj&euml; vler&euml;sim p&euml;r pun&euml;tor&euml;.</p>
 <?php endif; ?>
 </div>
 

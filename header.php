@@ -135,7 +135,9 @@ if ($csvFile) {
         <li>
           <a href="view_ankesat.php"><span class="fa fa-envelope-open mr-3 notif"><?php echo ($num_submissions > 0) ? "<small style='color:black;' class='d-flex align-items-center justify-content-center'>$num_submissions</small>" : ""; ?></span> Ankesat</a>
         </li>
-
+        <li>
+          <a href="kodet-policore.php"><span class="fa fa-book mr-3"></span> Kodet e komunikimit</a>
+        </li>
         <li>
           <a href="vleresimi.php"><span class="fa fa-book mr-3"></span> Vler&euml;so punonjesin</a>
         </li>

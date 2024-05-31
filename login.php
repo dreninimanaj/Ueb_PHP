@@ -1,8 +1,9 @@
-
 <?php
 $dsn = 'mysql:host=localhost;dbname=main';
 $username = 'root';
-$password = '';
+$password = 'dreni123';
+
+include 'config.php';
 
 try {
     $pdo = new PDO($dsn, $username, $password);
@@ -108,7 +109,7 @@ if (isset($_POST['submit'])) {
                     </script>
                     <script>
                         // JavaScript code to display the alert box
-                        document.addEventListener('DOMContentLoaded', function () {
+                        document.addEventListener('DOMContentLoaded', function() {
                             var alertBox = document.createElement('div');
                             alertBox.className = 'alert-box';
                             alertBox.textContent = 'Protected by StormWall';
